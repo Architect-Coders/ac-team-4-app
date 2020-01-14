@@ -3,4 +3,9 @@
     <string name="title_gyms">Gyms</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="input_gym_name">Gym name</string>
+    <string name="input_gym_description">Gym description</string>
+    <string name="input_gym_lat">Latitude</string>
+    <string name="input_gym_lon">Longitude</string>
+    <string name="input_gym_submit">Submit</string>
 </resources>
