@@ -4,30 +4,30 @@ import com.team4.BoulderBuild.model.data.source.ProblemsLocalDataSource
 import com.team4.BoulderBuild.model.domain.Problem
 
 class ProblemsRepository(
-    private val ProblemsLocalDataSource: ProblemsLocalDataSource
+    private val problemsLocalDataSource: ProblemsLocalDataSource
 ) {
     suspend fun getAllProblems(): List<Problem> {
-        return ProblemsLocalDataSource.getAllProblems()
+        return problemsLocalDataSource.getAllProblems()
     }
 
     suspend fun saveProblems(Problems: List<Problem>) {
-        ProblemsLocalDataSource.saveProblems(Problems)
+        problemsLocalDataSource.saveProblems(Problems)
     }
 
     suspend fun findProblemById(id: Int): Problem? {
-        return ProblemsLocalDataSource.findProblemById(id)
+        return problemsLocalDataSource.findProblemById(id)
     }
 
     suspend fun update(Problem: Problem) {
         if (Problem.id == null) {
-            Problem.id = ProblemCount() // TODO: improve id management
+            Problem.id = problemCount() // TODO: improve id management
             saveProblems(listOf(Problem))
         } else {
-            ProblemsLocalDataSource.update(Problem)
+            problemsLocalDataSource.update(Problem)
         }
     }
 
-    suspend fun ProblemCount(): Int {
-        return ProblemsLocalDataSource.ProblemCount()
+    suspend fun problemCount(): Int {
+        return problemsLocalDataSource.problemCount()
     }
 }
