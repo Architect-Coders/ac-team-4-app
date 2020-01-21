@@ -18,5 +18,5 @@ abstract class GymDatabase : RoomDatabase(){
 
     abstract fun gymDao(): GymDao
 
-    abstract fun problemDao(): GymDao
+    abstract fun problemDao(): ProblemDao
 }

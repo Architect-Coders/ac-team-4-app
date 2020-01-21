@@ -1,11 +1,10 @@
 package com.team4.BoulderBuild.model.domain.enums
 
 
-enum class Grade(val value: Int) {
-    VERY_HARD(5),
-    HARD(4),
-    NORMAL(3),
-    EASY(2),
-    VERY_EASY(1)
-
+enum class Grade {
+    VERY_HARD,
+    HARD,
+    NORMAL,
+    EASY,
+    VERY_EASY
 }

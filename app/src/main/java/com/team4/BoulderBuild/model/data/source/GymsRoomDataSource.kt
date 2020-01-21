@@ -1,8 +1,8 @@
 package com.team4.BoulderBuild.model.data.source
 
 import com.team4.BoulderBuild.model.data.database.GymDatabase
-import com.team4.BoulderBuild.model.data.toDBGym
-import com.team4.BoulderBuild.model.data.toDomainGym
+import com.team4.BoulderBuild.model.data.mappers.toDBGym
+import com.team4.BoulderBuild.model.data.mappers.toDomainGym
 import com.team4.BoulderBuild.model.domain.Gym
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
