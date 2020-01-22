@@ -19,6 +19,10 @@ class ProblemsRoomDataSource(db: GymDatabase) : ProblemsLocalDataSource {
         problemDao.getAll().map { it.toDomainProblem() }
     }
 
+    override suspend fun getProblemsByGym(gymId: Int): List<Problem> = withContext(Dispatchers.IO) {
+        problemDao.getProblemsByGym(gymId).map { it.toDomainProblem() }
+    }
+
     override suspend fun findProblemById(id: Int): Problem? = withContext(Dispatchers.IO) {
         problemDao.findById(id).toDomainProblem()
     }

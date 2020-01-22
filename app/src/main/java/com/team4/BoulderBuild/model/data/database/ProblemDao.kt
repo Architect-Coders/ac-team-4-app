@@ -7,6 +7,9 @@ interface ProblemDao {
     @Query("SELECT * FROM Problem")
     fun getAll(): List<Problem>
 
+    @Query("SELECT * FROM Problem WHERE gymId = :gymId")
+    fun getProblemsByGym(gymId: Int): List<Problem>
+
     @Query("SELECT * FROM Problem WHERE id = :id")
     fun findById(id: Int): Problem
 

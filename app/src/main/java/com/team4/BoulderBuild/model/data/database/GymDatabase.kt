@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [Gym::class, Problem::class], version = 2)
+@Database(entities = [Gym::class, Problem::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class GymDatabase : RoomDatabase() {
 

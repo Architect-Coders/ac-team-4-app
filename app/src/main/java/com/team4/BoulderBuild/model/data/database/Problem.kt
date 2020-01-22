@@ -10,5 +10,6 @@ data class Problem(
     val id: Int,
     val description: String,
     val grade: Grade,
-    val imgSrc: String
+    val imgSrc: String,
+    val gymId: Int
 )

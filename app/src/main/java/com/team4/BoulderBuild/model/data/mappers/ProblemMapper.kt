@@ -9,7 +9,8 @@ fun DomainProblem.toDBProblem(): DBProblem =
         id ?: -1,
         description ?: "",
         grade ?: Grade.NORMAL,
-        imgSrc ?: ""
+        imgSrc ?: "",
+        gymId
     )
 
 fun DBProblem.toDomainProblem(): DomainProblem =
@@ -17,5 +18,6 @@ fun DBProblem.toDomainProblem(): DomainProblem =
         id,
         description,
         grade,
-        imgSrc
+        imgSrc,
+        gymId
     )

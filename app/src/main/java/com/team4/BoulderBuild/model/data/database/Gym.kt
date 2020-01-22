@@ -5,7 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Gym (
-    @PrimaryKey(autoGenerate = false) val id: Int,
+    @PrimaryKey(autoGenerate = false)
+    val id: Int,
     val name: String,
     val description: String,
     val lat : Double,
