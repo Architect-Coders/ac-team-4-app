@@ -13,12 +13,13 @@ object ApplicationDI {
     private var context: Context? = null
     private lateinit var gymsRepository: GymsRepository
     private lateinit var problemsRepository: ProblemsRepository
+    private lateinit var database: GymDatabase
 
     fun initDI(context: Context) {
         this.context = context
-        gymsRepository = GymsRepository(GymsRoomDataSource(GymDatabase.buildDatabase(context)))
-        problemsRepository =
-            ProblemsRepository(ProblemsRoomDataSource(GymDatabase.buildDatabase(context)))
+        database = GymDatabase.buildDatabase(context)
+        gymsRepository = GymsRepository(GymsRoomDataSource(database))
+        problemsRepository = ProblemsRepository(ProblemsRoomDataSource(database))
     }
 
     fun getGymsRepository(): GymsRepository {
