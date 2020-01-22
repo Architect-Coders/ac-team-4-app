@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
-@Database(entities = [Gym::class], version = 1)
-abstract class GymDatabase : RoomDatabase(){
+@Database(entities = [Gym::class, Problem::class], version = 2)
+@TypeConverters(Converters::class)
+abstract class GymDatabase : RoomDatabase() {
 
     companion object {
         fun buildDatabase(context: Context) = Room.databaseBuilder(
