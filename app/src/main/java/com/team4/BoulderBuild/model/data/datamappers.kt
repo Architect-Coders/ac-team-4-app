@@ -1,6 +1,6 @@
 package com.team4.BoulderBuild.model.data
 
-import com.team4.BoulderBuild.model.domain.Gym as DomainGym
+import com.team4.domain.Gym as DomainGym
 import com.team4.BoulderBuild.model.data.database.Gym as DBGym
 
 fun DomainGym.toDBGym(): DBGym =

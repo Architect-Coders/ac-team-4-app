@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.team4.BoulderBuild.config.ApplicationDI
-import com.team4.BoulderBuild.model.domain.Gym
+import com.team4.domain.Gym
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
@@ -32,7 +32,13 @@ class GymFormViewModel(private val gymId : Int) : ViewModel() {
         }
     }
 
-    suspend fun saveNewData(newModel : Gym){
+    fun saveData(){
+        GlobalScope.async {
+            _model.value?.gym?.let { saveNewData(it) }
+        }
+    }
+
+    private suspend fun saveNewData(newModel : Gym){
         ApplicationDI.getGymsRepository()?.update(newModel)
         _model.postValue(UiModel(newModel))
     }

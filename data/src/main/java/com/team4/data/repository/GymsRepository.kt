@@ -1,7 +1,7 @@
-package com.team4.BoulderBuild.model.data.repository
+package com.team4.data.repository
 
-import com.team4.BoulderBuild.model.data.source.GymsLocalDataSource
-import com.team4.BoulderBuild.model.domain.Gym
+import com.team4.data.source.GymsLocalDataSource
+import com.team4.domain.Gym
 
 class GymsRepository(
     private val gymsLocalDataSource: GymsLocalDataSource
@@ -20,7 +20,7 @@ class GymsRepository(
 
     suspend fun update(gym: Gym) {
         if (gym.id == null) {
-            gym.id = gymCount() // TODO: improve id management
+            // gym.id = gymCount() // TODO: improve id management
             saveGyms(listOf(gym))
         } else {
             gymsLocalDataSource.update(gym)

@@ -2,8 +2,7 @@ package com.team4.BoulderBuild.config
 
 import android.content.Context
 import com.team4.BoulderBuild.model.data.database.GymDatabase
-import com.team4.BoulderBuild.model.data.repository.GymsRepository
-import com.team4.BoulderBuild.model.data.source.GymsLocalDataSource
+import com.team4.data.repository.GymsRepository
 import com.team4.BoulderBuild.model.data.source.GymsRoomDataSource
 
 object ApplicationDI{
