@@ -92,6 +92,6 @@
             android:layout_height="wrap_content"
             android:text="@string/input_gym_submit"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-            android:onClick="@{() -> viewmodel.onClickSubmit()}"/>
+            android:onClick="@{() -> viewmodel.onClickSubmit(viewmodel.model)}"/>
     </LinearLayout>
 </layout>

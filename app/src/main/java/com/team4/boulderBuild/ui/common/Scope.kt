@@ -1,5 +1,6 @@
 package com.team4.boulderBuild.ui.common
 
+import android.util.Log
 import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,7 @@ interface Scope : CoroutineScope {
         get() = Dispatchers.Main + job
 
     fun initScope() {
+        Log.d("ScopedViewModel", "init!!!!!!!!!!!!!!!!!!!!!!!!!!!!" )
         job = SupervisorJob()
     }
 

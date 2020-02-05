@@ -24,14 +24,9 @@ class GymFormActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
-        Log.d(GYM_ID, "oncreate!!!!!!!!!!!!!!!!!!!!!!!!!!!!" )
+
         gymFormViewModel =
             ViewModelProviders.of(this, GymFormViewModelFactory(intent.getIntExtra(GYM_ID, 1))).get(GymFormViewModel::class.java)
-
-
-        gymFormViewModel.model.observe(this, Observer { res ->
-            Log.e("Form", res.name )
-        })
 
         val binding: ActivityGymFormBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_gym_form)

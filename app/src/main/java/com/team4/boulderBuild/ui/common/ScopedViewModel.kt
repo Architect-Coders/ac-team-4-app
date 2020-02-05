@@ -1,5 +1,6 @@
 package com.team4.boulderBuild.ui.common
 
+
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
 

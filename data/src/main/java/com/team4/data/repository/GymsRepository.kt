@@ -1,16 +1,26 @@
 package com.team4.data.repository
 
 import com.team4.data.source.GymsLocalDataSource
+import com.team4.data.source.GymsRemoteDataSource
 import com.team4.domain.Gym
 
 class GymsRepository(
-    private val gymsLocalDataSource: GymsLocalDataSource
+    private val gymsLocalDataSource: GymsLocalDataSource,
+    private val gymsRemoteDataSource: GymsRemoteDataSource
 ) {
     suspend fun getAllGyms(): List<Gym> {
-        return gymsLocalDataSource.getAllGyms()
+        var isEmpty = gymsLocalDataSource.isEmpty()
+
+        if (isEmpty) {
+            val gyms =
+                gymsRemoteDataSource.getAllGyms("", "")
+            gymsLocalDataSource.saveGyms(gyms)
+        }
+        var gyms = gymsLocalDataSource.getAllGyms()
+        return gyms
     }
 
-    suspend fun saveGyms(gyms: List<Gym>) {
+    private suspend fun saveGyms(gyms: List<Gym>) {
         gymsLocalDataSource.saveGyms(gyms)
     }
 

@@ -18,7 +18,9 @@ class GymFormViewModel(private val gymId : Int) : ScopedViewModel() {
 
     init {
         launch {
-            _model.value ?: ApplicationDI.getGymsRepository()?.findGymById(gymId)
+            ApplicationDI.getGymsRepository()?.getAllGyms()
+            Log.d("Form", "oncreate!!!!!!!!!!!!!!!!!!!!!!!!!!!!" )
+            _model.value = ApplicationDI.getGymsRepository()?.findGymById(gymId)
             updateUi()
         }
     }
@@ -34,10 +36,10 @@ class GymFormViewModel(private val gymId : Int) : ScopedViewModel() {
         _model.postValue(newModel)
     }
 
-    fun onClickSubmit() {
+    fun onClickSubmit(newModel : Gym) {
         launch {
-            Log.e("Form", "onclick@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" )
-            model.value?.let {
+            Log.d("Form", "onclick@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" )
+            newModel?.let {
                 _model.value = it
                 updateUi()
                 saveData()
