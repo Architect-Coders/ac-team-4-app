@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etGymName"
                 android:inputType="text"
-                android:text="@{viewmodel.model.name}"/>
+                android:text="@={viewmodel._name}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etGymDescription"
                 android:inputType="textMultiLine"
-                android:text="@{viewmodel.model.description}"/>
+                android:text="@={viewmodel._description}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,6 +92,6 @@
             android:layout_height="wrap_content"
             android:text="@string/input_gym_submit"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-            android:onClick="@{() -> viewmodel.onClickSubmit(viewmodel.model)}"/>
+            android:onClick="@{() -> viewmodel.onClickSubmit()}"/>
     </LinearLayout>
 </layout>
