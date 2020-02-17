@@ -10,11 +10,14 @@ import com.team4.usecases.FindGymById
 import com.team4.usecases.UpdateGym
 import com.team4.domain.Gym
 import com.team4.boulderBuild.ui.common.ScopedViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class GymFormViewModel(private val gymId : Int,
                        private val findGymById: FindGymById,
-                       private val updateGym: UpdateGym) : ScopedViewModel() {
+                       private val updateGym: UpdateGym,
+                       override val uiDispatcher: CoroutineDispatcher
+) : ScopedViewModel(uiDispatcher) {
 
     private val _model = MutableLiveData<Gym>()
     val model : LiveData<Gym> get() = _model
@@ -65,10 +68,11 @@ class GymFormViewModel(private val gymId : Int,
 
 class GymFormViewModelFactory(private val gymId : Int,
                               private val findGymById: FindGymById,
-                              private val updateGym: UpdateGym) : ViewModelProvider.Factory {
+                              private val updateGym: UpdateGym,
+                              private val uiDispatcher: CoroutineDispatcher) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return GymFormViewModel(gymId, findGymById, updateGym) as T
+        return GymFormViewModel(gymId, findGymById, updateGym, uiDispatcher) as T
     }
 
 }

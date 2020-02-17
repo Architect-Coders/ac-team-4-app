@@ -4,42 +4,26 @@ import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
-import com.team4.usecases.FindGymById
-import com.team4.usecases.UpdateGym
 import com.team4.boulderBuild.R
 
 import com.team4.boulderBuild.databinding.ActivityGymFormBinding
-import com.team4.boulderBuild.model.data.database.GymDatabase
-import com.team4.boulderBuild.model.data.database.GymsRoomDataSource
-import com.team4.boulderBuild.model.data.server.GymsRemoteDataSource
-import com.team4.data.repository.GymsRepository
+import org.koin.android.scope.currentScope
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class GymFormActivity : AppCompatActivity() {
 
     companion object {
         const val GYM_ID = "GymFormActivity:gymId"
     }
-    private lateinit var gymFormViewModel: GymFormViewModel
+
+    private val gymFormViewModel: GymFormViewModel by currentScope.viewModel(this) {
+        parametersOf(intent.getIntExtra(GYM_ID, 1))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-
-        val gymsRepository = GymsRepository(
-            GymsRoomDataSource(
-                GymDatabase.buildDatabase(this)
-            ),
-            GymsRemoteDataSource()
-        )
-
-        gymFormViewModel =
-            ViewModelProviders.of(this,
-                    GymFormViewModelFactory(intent.getIntExtra(GYM_ID, 1),
-                        FindGymById(gymsRepository),
-                        UpdateGym(gymsRepository)
-                    )
-            ).get(GymFormViewModel::class.java)
 
         val binding: ActivityGymFormBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_gym_form)

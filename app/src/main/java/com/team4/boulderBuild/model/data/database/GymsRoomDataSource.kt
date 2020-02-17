@@ -23,6 +23,7 @@ class GymsRoomDataSource(db: GymDatabase) : GymsLocalDataSource {
     }
 
     override suspend fun findGymById(id: Int): Gym? = withContext(Dispatchers.IO){
+
         gymDao.findById(id).toDomainGym()
     }
 

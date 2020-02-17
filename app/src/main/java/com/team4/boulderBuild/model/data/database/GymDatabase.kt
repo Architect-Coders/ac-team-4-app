@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
 abstract class GymDatabase : RoomDatabase(){
 
     companion object {
-        fun buildDatabase(context: Context) = Room.databaseBuilder(
+        fun build(context: Context) = Room.databaseBuilder(
             context,
             GymDatabase::class.java,
             "gym-db"
