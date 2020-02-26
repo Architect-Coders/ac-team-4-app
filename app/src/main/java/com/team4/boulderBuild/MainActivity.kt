@@ -13,22 +13,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gym_form)
-        /*
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        setContentView(R.layout.activity_main)
 
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_gyms, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-
-
+            setOf(R.id.navigation_gyms, R.id.navigation_dashboard, R.id.navigation_notifications)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-         */
     }
 }

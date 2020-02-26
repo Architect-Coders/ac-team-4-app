@@ -4,28 +4,32 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.team4.boulderBuild.R
+import com.team4.boulderBuild.databinding.FragmentNotificationsBinding
+import com.team4.boulderBuild.ui.common.bindingInflate
+
+import org.koin.android.scope.currentScope
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class NotificationsFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private val notificationsViewModel: NotificationsViewModel by currentScope.viewModel(this)
+    private var binding: FragmentNotificationsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+        binding = container?.bindingInflate(R.layout.fragment_notifications, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding?.apply {
+            viewmodel = notificationsViewModel
+            lifecycleOwner = this@NotificationsFragment
+        }
     }
 }

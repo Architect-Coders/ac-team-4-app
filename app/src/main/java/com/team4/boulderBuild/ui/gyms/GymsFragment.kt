@@ -4,28 +4,44 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.team4.boulderBuild.databinding.FragmentGymsBinding
+
 import com.team4.boulderBuild.R
+import com.team4.boulderBuild.ui.common.bindingInflate
+import kotlinx.android.synthetic.main.fragment_gyms.*
+import org.koin.android.scope.currentScope
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class GymsFragment : Fragment() {
 
-    private lateinit var gymsViewModel: GymsViewModel
+    private lateinit var adapter: GymsAdapter
+    private lateinit var navController: NavController
+    private val gymsViewModel: GymsViewModel by currentScope.viewModel(this)
+    private var binding: FragmentGymsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        gymsViewModel =
-            ViewModelProviders.of(this).get(GymsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gyms, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gyms)
-        gymsViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+        binding = container?.bindingInflate(R.layout.fragment_gyms, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = view.findNavController()
+
+
+        adapter = GymsAdapter(gymsViewModel::onMovieClicked)
+        recycler.adapter = adapter
+
+        binding?.apply {
+            viewmodel = gymsViewModel
+            lifecycleOwner = this@GymsFragment
+        }
     }
 }

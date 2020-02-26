@@ -3,8 +3,6 @@ package com.team4.boulderBuild.ui.gymform
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 
 import com.team4.usecases.FindGymById
 import com.team4.usecases.UpdateGym
@@ -64,15 +62,4 @@ class GymFormViewModel(private val gymId : Int,
         updateGym.invoke(newModel)
         _model.postValue(newModel)
     }
-}
-
-class GymFormViewModelFactory(private val gymId : Int,
-                              private val findGymById: FindGymById,
-                              private val updateGym: UpdateGym,
-                              private val uiDispatcher: CoroutineDispatcher) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return GymFormViewModel(gymId, findGymById, updateGym, uiDispatcher) as T
-    }
-
 }

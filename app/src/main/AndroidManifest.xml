@@ -13,7 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:name="com.team4.boulderBuild.BoulderBuildApp">
 
-        <activity android:name="com.team4.boulderBuild.ui.gymform.GymFormActivity">
+        <activity android:name="com.team4.boulderBuild.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

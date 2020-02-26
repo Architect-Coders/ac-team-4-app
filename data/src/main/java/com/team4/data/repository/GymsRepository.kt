@@ -16,8 +16,7 @@ class GymsRepository(
                 gymsRemoteDataSource.getAllGyms("", "")
             gymsLocalDataSource.saveGyms(gyms)
         }
-        var gyms = gymsLocalDataSource.getAllGyms()
-        return gyms
+        return gymsLocalDataSource.getAllGyms()
     }
 
     private suspend fun saveGyms(gyms: List<Gym>) {
