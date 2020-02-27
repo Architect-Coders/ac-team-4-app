@@ -11,7 +11,7 @@
         android:label="@string/title_gyms"
         tools:layout="@layout/fragment_gyms" >
         <action
-            android:id="@+id/action_navigation_gyms_to_gymFormFragment2"
+            android:id="@+id/action_navigation_gyms_to_gymFormFragment"
             app:destination="@id/gymFormFragment" />
     </fragment>
 

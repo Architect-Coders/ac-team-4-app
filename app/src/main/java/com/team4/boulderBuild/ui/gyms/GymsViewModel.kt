@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.team4.boulderBuild.ui.common.Event
 import com.team4.boulderBuild.ui.common.ScopedViewModel
 import com.team4.domain.Gym
 
@@ -17,6 +18,9 @@ class GymsViewModel(private val allGyms: GetAllGyms,
 
     private val _gyms = MutableLiveData<List<Gym>>()
     val gyms : LiveData<List<Gym>> get() = _gyms
+
+    private val _navigateToGym = MutableLiveData<Event<Int>>()
+    val navigateToGym: LiveData<Event<Int>> get() = _navigateToGym
 
     init {
         initScope()
@@ -32,7 +36,7 @@ class GymsViewModel(private val allGyms: GetAllGyms,
     }
 
     fun onMovieClicked(gym: Gym) {
-       // _navigateToGym.value = Event(gym.id)
+       _navigateToGym.value = Event(gym.id)
     }
 
     override fun onCleared() {
