@@ -8,4 +8,5 @@
     <string name="input_gym_lat">Latitude</string>
     <string name="input_gym_lon">Longitude</string>
     <string name="input_gym_submit">Submit</string>
+    <string name="textview">TextView</string>
 </resources>
