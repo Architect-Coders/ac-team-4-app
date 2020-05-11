@@ -5,8 +5,9 @@ import com.team4.domain.Gym
 
 class GymsRemoteDataSourceFake : GymsRemoteDataSource {
     override suspend fun getAllGyms(apiKey: String, region: String): List<Gym> {
-        return mutableListOf(Gym(1, "nombre", "descripcion", 1.0, 1.1, "imagen"),
-            Gym(2, "nombre2", "descripcion2", 1.0, 1.1, "imagen"),
-            Gym(3, "nombre3", "descripcion3", 1.0, 1.1, "imagen"))
+        return listOf(
+            Gym(1, "Area 51 Boulder", "Descripción", 4.0, 1.4, ""),
+            Gym(2, "The Factory", "Descripción 2", 4.0, 1.3, ""),
+            Gym(3, "The Roof", "Descripción 3", 4.0, 1.2, ""))
     }
 }

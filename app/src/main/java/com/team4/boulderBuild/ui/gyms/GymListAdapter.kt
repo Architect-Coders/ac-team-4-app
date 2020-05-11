@@ -1,16 +1,18 @@
 package com.team4.boulderBuild.ui.gyms
 
-import com.team4.boulderBuild.R
+
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.team4.boulderBuild.R
 import com.team4.boulderBuild.databinding.ItemGymActionsBinding
-import com.team4.boulderBuild.databinding.RowGymBinding
 import com.team4.boulderBuild.ui.common.basicDiffUtil
 import com.team4.boulderBuild.ui.common.bindingInflate
 import com.team4.domain.Gym
 
-class GymsAdapter(private val listener: (Gym) -> Unit) :
-    RecyclerView.Adapter<GymsAdapter.ViewHolder>() {
+
+class GymListAdapter(
+    private val listener: (Gym) -> Unit
+): RecyclerView.Adapter<GymListAdapter.ViewHolder>() {
 
     var gyms: List<Gym> by basicDiffUtil(
         emptyList(),
@@ -20,13 +22,15 @@ class GymsAdapter(private val listener: (Gym) -> Unit) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(parent.bindingInflate(R.layout.item_gym_actions, false))
 
-    override fun getItemCount(): Int = gyms.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val gym = gyms[position]
-        holder.dataBinding.gym = gym
-        holder.itemView.setOnClickListener { listener(gym) }
+        val currentGym = gyms[position]
+        holder.dataBinding.gym = currentGym
+        holder.itemView.setOnClickListener{
+            listener(currentGym)
+        }
     }
 
-    class ViewHolder(val dataBinding: ItemGymActionsBinding) : RecyclerView.ViewHolder(dataBinding.root)
+    override fun getItemCount(): Int = gyms.size
+
+    inner class ViewHolder(val dataBinding: ItemGymActionsBinding) : RecyclerView.ViewHolder(dataBinding.root)
 }

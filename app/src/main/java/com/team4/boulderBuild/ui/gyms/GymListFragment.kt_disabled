@@ -1,0 +1,56 @@
+package com.team4.boulderBuild.ui.gyms
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.team4.boulderBuild.R
+
+//import com.team4.boulderbuild.ui.gyms.GymListViewModel.UiModel
+
+
+class GymListFragment : Fragment() {
+
+    private lateinit var binding: FragmentGymsBinding
+    private lateinit var gymListViewModel: GymListViewModel
+    private lateinit var gymListAdapter: GymListAdapter
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        //TODO - Revisar el scope y cambiar a la función de extensión de getViewModel que propuso Antonio Leiva
+        gymListViewModel = ViewModelProvider(this, GymListViewModelFactory(ApplicationDI.getGymsRepository()!!))[GymListViewModel::class.java]
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_gym_list, container, false)
+        binding.viewmodel = gymListViewModel
+        binding.lifecycleOwner = this
+
+        gymListAdapter = GymListAdapter(gymListViewModel::onGymClicked)
+        binding.rvGymList.adapter = gymListAdapter
+
+//        gymListViewModel.model.observe(this.viewLifecycleOwner, Observer(::updateUi))
+
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        binding.rvGymList.adapter = gymListAdapter
+    }
+
+//    private fun updateUi(model: UiModel) {
+//        when (model) {
+////                UiModel.Loading -> TODO()
+//            is UiModel.Content -> gymListAdapter.gyms = model.gyms
+//            is UiModel.Navigation -> Log.d("GymListFragment", "Pressed navigation")
+//        }
+//    }
+}
