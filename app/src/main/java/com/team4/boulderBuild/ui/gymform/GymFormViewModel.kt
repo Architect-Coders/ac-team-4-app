@@ -21,8 +21,12 @@ class GymFormViewModel(private val gymId : Int,
     val model : LiveData<Gym> get() = _model
 
     // Two-way databinding, exposing MutableLiveData
+    
+    
     val _name = MutableLiveData<String>()
     val _description = MutableLiveData<String>()
+    val _longitude = MutableLiveData<String>()
+    val _latitude = MutableLiveData<String>()
 
     init {
         launch {
@@ -37,7 +41,11 @@ class GymFormViewModel(private val gymId : Int,
         launch {
             Log.d("Form", "onclick@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" )
             model.value?.let {
-                val updatedGym = it.copy(name = _name.value ?: "", description = _description.value ?: "")
+                val updatedGym = it.copy(
+                    name = _name.value ?: "",
+                    description = _description.value ?: "",
+                    lon = _longitude.value?.toDouble() ?: 0.0,
+                    lat = _latitude.value?.toDouble() ?: 0.0)
                 _model.value = updatedGym
                 updateUi()
                 saveData()
@@ -49,6 +57,8 @@ class GymFormViewModel(private val gymId : Int,
         model.value?.run {
             _name.value = name
             _description.value = description
+            _longitude.value =  lon.toString()
+            _latitude.value = lat.toString()
         }
     }
 

@@ -61,7 +61,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etLocationLat"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal"
+                    android:text="@={viewmodel._latitude}" />
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +77,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etLocationLon"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal"
+                    android:text="@={viewmodel._longitude}" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
