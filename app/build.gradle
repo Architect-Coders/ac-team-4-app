@@ -46,6 +46,10 @@ dependencies {
 
     kapt androidKaptLibs.values()
 
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    // Skip this if you don't want to use integration libraries or configure Glide.
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
     testImplementation testLibs.values()
     testImplementation androidxTestLibs.values()
     androidTestImplementation androidTestLibs.values()

@@ -3,6 +3,7 @@ package com.team4.boulderBuild.ui.common
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
 
 import androidx.databinding.DataBindingUtil
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 import com.team4.boulderBuild.BoulderBuildApp
 import kotlin.properties.Delegates
@@ -26,6 +28,10 @@ fun <T : ViewDataBinding> ViewGroup.bindingInflate(
     attachToRoot: Boolean = true
 ): T =
     DataBindingUtil.inflate(LayoutInflater.from(context), layoutRes, this, attachToRoot)
+
+fun ImageView.loadUrl(url: String) {
+    Glide.with(context).load(url).into(this)
+}
 
 inline fun <VH : RecyclerView.ViewHolder, T> RecyclerView.Adapter<VH>.basicDiffUtil(
     initialValue: List<T>,
@@ -55,6 +61,8 @@ inline fun <reified T : ViewModel> Fragment.getViewModel(crossinline factory: ()
 
     return ViewModelProvider(this, vmFactory)[T::class.java]
 }
+
+inline fun <T:Any, R> T?.whenNotNull(callback: (T)->R): R? =  this?.let(callback)
 
 fun RecyclerView.addVerticalItemSeparationInDp(verticalItemSeparationInDp: Int) {
     addItemDecoration(MarginItemDecoration(verticalItemSeparationInDp))
