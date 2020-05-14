@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.LayoutRes
-
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -13,8 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-
+import coil.api.load
 import com.team4.boulderBuild.BoulderBuildApp
 import kotlin.properties.Delegates
 
@@ -30,7 +28,9 @@ fun <T : ViewDataBinding> ViewGroup.bindingInflate(
     DataBindingUtil.inflate(LayoutInflater.from(context), layoutRes, this, attachToRoot)
 
 fun ImageView.loadUrl(url: String) {
-    Glide.with(context).load(url).into(this)
+    load(url) {
+        crossfade(true)
+    }
 }
 
 inline fun <VH : RecyclerView.ViewHolder, T> RecyclerView.Adapter<VH>.basicDiffUtil(
