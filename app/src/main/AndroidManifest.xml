@@ -16,7 +16,8 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:name="com.team4.boulderBuild.BoulderBuildApp">
 
-        <activity android:name="com.team4.boulderBuild.MainActivity">
+        <activity android:name="com.team4.boulderBuild.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
