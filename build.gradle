@@ -1,5 +1,3 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     ext.kotlin_version = '1.6.0'
     repositories {
@@ -10,6 +8,10 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
+        /*
+         *  If you use Kotlin Gradle Plugin, you don't need to specify Kotlin's standard library
+         *  dependency manually since the plugin adds it to all the Kotlin source sets automatically
+         * */
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
     }
@@ -50,7 +52,6 @@ allprojects {
         ]
 
         kotlinLibs = [
-                stdlib    : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
                 coroutines: 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
         ]
 

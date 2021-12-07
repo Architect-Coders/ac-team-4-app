@@ -7,7 +7,7 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.team4.boulderBuild"
+        applicationId "com.team4.boulderbuild"
         minSdkVersion 22
         targetSdkVersion 31
         versionCode 1
