@@ -1,6 +1,5 @@
 package com.team4.data.source
 
-
 import com.team4.domain.Gym
 
 interface GymsRemoteDataSource {

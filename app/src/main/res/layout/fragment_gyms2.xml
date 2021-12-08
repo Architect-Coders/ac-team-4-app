@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.team4.boulderBuild.ui.gyms.GymsViewModel" />
+            type="com.team4.boulderbuild.ui.gyms.GymsViewModel" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView

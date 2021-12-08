@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.team4.boulderBuild.ui.gymform.GymFormViewModel" />
+            type="com.team4.boulderbuild.ui.gymform.GymFormViewModel" />
     </data>
 
     <LinearLayout

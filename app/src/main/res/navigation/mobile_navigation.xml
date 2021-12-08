@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_gyms"
-        android:name="com.team4.boulderBuild.ui.gyms.GymsFragment"
+        android:name="com.team4.boulderbuild.ui.gyms.GymsFragment"
         android:label="@string/title_gyms"
         tools:layout="@layout/fragment_gym_list" >
         <action
@@ -17,18 +17,18 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.team4.boulderBuild.ui.dashboard.DashboardFragment"
+        android:name="com.team4.boulderbuild.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.team4.boulderBuild.ui.notifications.NotificationsFragment"
+        android:name="com.team4.boulderbuild.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/gymFormFragment"
-        android:name="com.team4.boulderBuild.ui.gymform.GymFormFragment"
+        android:name="com.team4.boulderbuild.ui.gymform.GymFormFragment"
         android:label="GymFormFragment" >
         <argument
             android:name="id"

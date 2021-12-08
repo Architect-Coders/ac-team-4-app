@@ -5,7 +5,7 @@ import com.team4.domain.Gym
 
 class UpdateGym(private val gymsRepository: GymsRepository) {
     suspend fun invoke(gym: Gym): Gym = with(gym) {
-        //gymsRepository.update(gym)
+        // gymsRepository.update(gym)
         copy().also { gymsRepository.update(it) }
     }
 }
