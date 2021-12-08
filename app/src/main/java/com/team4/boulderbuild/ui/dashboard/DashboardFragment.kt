@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.team4.boulderbuild.R
 import com.team4.boulderbuild.databinding.FragmentDashboardBinding
 import com.team4.boulderbuild.ui.common.bindingInflate
+import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : ScopeFragment() {
 
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private var binding: FragmentDashboardBinding? = null

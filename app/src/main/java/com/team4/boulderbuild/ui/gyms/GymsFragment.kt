@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.team4.boulderbuild.R
@@ -12,9 +11,10 @@ import com.team4.boulderbuild.databinding.FragmentGymListBinding
 import com.team4.boulderbuild.ui.common.EventObserver
 import com.team4.boulderbuild.ui.common.addVerticalItemSeparationInDp
 import com.team4.boulderbuild.ui.common.bindingInflate
+import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class GymsFragment : Fragment() {
+class GymsFragment : ScopeFragment() {
 
     private lateinit var adapter: GymListAdapter
     private lateinit var navController: NavController

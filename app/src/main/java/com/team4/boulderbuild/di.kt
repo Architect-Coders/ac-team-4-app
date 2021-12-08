@@ -4,9 +4,13 @@ import android.app.Application
 import com.team4.boulderbuild.model.data.database.GymDatabase
 import com.team4.boulderbuild.model.data.database.GymsRoomDataSource
 import com.team4.boulderbuild.model.data.server.GymsRemoteDataSourceFake
+import com.team4.boulderbuild.ui.dashboard.DashboardFragment
 import com.team4.boulderbuild.ui.dashboard.DashboardViewModel
+import com.team4.boulderbuild.ui.gymform.GymFormFragment
 import com.team4.boulderbuild.ui.gymform.GymFormViewModel
+import com.team4.boulderbuild.ui.gyms.GymsFragment
 import com.team4.boulderbuild.ui.gyms.GymsViewModel
+import com.team4.boulderbuild.ui.notifications.NotificationsFragment
 import com.team4.boulderbuild.ui.notifications.NotificationsViewModel
 import com.team4.data.repository.GymsRepository
 import com.team4.data.source.GymsLocalDataSource
@@ -44,14 +48,22 @@ val dataModule = module {
 }
 
 private val scopesModule = module {
-    viewModel { GymsViewModel(get(), get()) }
-    factory { GetAllGyms(get()) }
+    scope<GymsFragment> {
+        viewModel { GymsViewModel(get(), get()) }
+        scoped { GetAllGyms(get()) }
+    }
 
-    viewModel { DashboardViewModel() }
+    scope<DashboardFragment> {
+        viewModel { DashboardViewModel() }
+    }
 
-    viewModel { NotificationsViewModel() }
+    scope<NotificationsFragment> {
+        viewModel { NotificationsViewModel() }
+    }
 
-    viewModel { (id: Int) -> GymFormViewModel(id, get(), get(), get()) }
-    factory { FindGymById(get()) }
-    factory { UpdateGym(get()) }
+    scope<GymFormFragment> {
+        viewModel { (id: Int) -> GymFormViewModel(id, get(), get(), get()) }
+        scoped { FindGymById(get()) }
+        scoped { UpdateGym(get()) }
+    }
 }
