@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import com.team4.boulderbuild.R
 import com.team4.boulderbuild.databinding.FragmentNotificationsBinding
 import com.team4.boulderbuild.ui.common.bindingInflate
-import org.koin.android.scope.currentScope
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotificationsFragment : Fragment() {
 
-    private val notificationsViewModel: NotificationsViewModel by currentScope.viewModel(this)
+    private val notificationsViewModel: NotificationsViewModel by viewModel()
     private var binding: FragmentNotificationsBinding? = null
 
     override fun onCreateView(

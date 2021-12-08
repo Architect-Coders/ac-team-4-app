@@ -4,13 +4,9 @@ import android.app.Application
 import com.team4.boulderbuild.model.data.database.GymDatabase
 import com.team4.boulderbuild.model.data.database.GymsRoomDataSource
 import com.team4.boulderbuild.model.data.server.GymsRemoteDataSourceFake
-import com.team4.boulderbuild.ui.dashboard.DashboardFragment
 import com.team4.boulderbuild.ui.dashboard.DashboardViewModel
-import com.team4.boulderbuild.ui.gymform.GymFormFragment
 import com.team4.boulderbuild.ui.gymform.GymFormViewModel
-import com.team4.boulderbuild.ui.gyms.GymsFragment
 import com.team4.boulderbuild.ui.gyms.GymsViewModel
-import com.team4.boulderbuild.ui.notifications.NotificationsFragment
 import com.team4.boulderbuild.ui.notifications.NotificationsViewModel
 import com.team4.data.repository.GymsRepository
 import com.team4.data.source.GymsLocalDataSource
@@ -22,21 +18,20 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
-import org.koin.core.qualifier.named
+import org.koin.core.logger.Level
 import org.koin.dsl.module
 
 fun Application.initDI() {
     startKoin {
-        androidLogger()
+        androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
         androidContext(this@initDI)
         modules(listOf(appModule, dataModule, scopesModule))
     }
 }
 
 private val appModule = module {
-
     single { GymDatabase.build(get()) }
     factory<GymsLocalDataSource> { GymsRoomDataSource(get()) }
     factory<GymsRemoteDataSource> { GymsRemoteDataSourceFake() }
@@ -49,28 +44,14 @@ val dataModule = module {
 }
 
 private val scopesModule = module {
+    viewModel { GymsViewModel(get(), get()) }
+    factory { GetAllGyms(get()) }
 
-    scope(named<MainActivity>()) {
-        // viewModel { MainViewModel(get(), get()) }
-        // scoped { GetPopularMovies(get()) }
-    }
+    viewModel { DashboardViewModel() }
 
-    scope(named<GymsFragment>()) {
-        viewModel { GymsViewModel(get(), get()) }
-        scoped { GetAllGyms(get()) }
-    }
+    viewModel { NotificationsViewModel() }
 
-    scope(named<DashboardFragment>()) {
-        viewModel { DashboardViewModel() }
-    }
-
-    scope(named<NotificationsFragment>()) {
-        viewModel { NotificationsViewModel() }
-    }
-
-    scope(named<GymFormFragment>()) {
-        viewModel { (id: Int) -> GymFormViewModel(id, get(), get(), get()) }
-        scoped { FindGymById(get()) }
-        scoped { UpdateGym(get()) }
-    }
+    viewModel { (id: Int) -> GymFormViewModel(id, get(), get(), get()) }
+    factory { FindGymById(get()) }
+    factory { UpdateGym(get()) }
 }

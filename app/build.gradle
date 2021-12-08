@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
@@ -40,19 +39,12 @@ dependencies {
     implementation androidLibs.values()
     implementation kotlinLibs.values()
     implementation libs.values()
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
 
     kapt androidKaptLibs.values()
-
-    implementation("io.coil-kt:coil:1.4.0")
 
     testImplementation testLibs.values()
     testImplementation androidxTestLibs.values()
     androidTestImplementation androidTestLibs.values()
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
 }
 
