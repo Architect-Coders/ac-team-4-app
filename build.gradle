@@ -1,5 +1,6 @@
 buildscript {
     ext.kotlin_version = '1.6.0'
+
     repositories {
         google()
         mavenCentral()
@@ -56,10 +57,10 @@ allprojects {
         ]
 
         libs = [
-                okhttpLoginInterceptor   : 'com.squareup.okhttp3:logging-interceptor:4.9.3',
-                retrofit                 : 'com.squareup.retrofit2:retrofit:2.9.0',
-                retrofitGsonConverter    : 'com.squareup.retrofit2:converter-gson:2.9.0',
-                koin                     : "org.koin:koin-android-viewmodel:2.0.1"
+                okhttpLoginInterceptor: 'com.squareup.okhttp3:logging-interceptor:4.9.3',
+                retrofit              : 'com.squareup.retrofit2:retrofit:2.9.0',
+                retrofitGsonConverter : 'com.squareup.retrofit2:converter-gson:2.9.0',
+                koin                  : "org.koin:koin-android-viewmodel:2.0.1"
         ]
 
         testLibs = [

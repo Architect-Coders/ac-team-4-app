@@ -1,7 +1,6 @@
 package com.team4.boulderbuild
 
 import android.app.Application
-
 import com.team4.boulderbuild.model.data.database.GymDatabase
 import com.team4.boulderbuild.model.data.database.GymsRoomDataSource
 import com.team4.boulderbuild.model.data.server.GymsRemoteDataSourceFake
@@ -17,9 +16,8 @@ import com.team4.data.repository.GymsRepository
 import com.team4.data.source.GymsLocalDataSource
 import com.team4.data.source.GymsRemoteDataSource
 import com.team4.usecases.FindGymById
-import com.team4.usecases.UpdateGym
 import com.team4.usecases.GetAllGyms
-
+import com.team4.usecases.UpdateGym
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
@@ -53,12 +51,12 @@ val dataModule = module {
 private val scopesModule = module {
 
     scope(named<MainActivity>()) {
-        //viewModel { MainViewModel(get(), get()) }
-       //scoped { GetPopularMovies(get()) }
+        // viewModel { MainViewModel(get(), get()) }
+        // scoped { GetPopularMovies(get()) }
     }
 
     scope(named<GymsFragment>()) {
-        viewModel { GymsViewModel(get(),get()) }
+        viewModel { GymsViewModel(get(), get()) }
         scoped { GetAllGyms(get()) }
     }
 

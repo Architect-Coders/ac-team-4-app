@@ -1,6 +1,5 @@
 package com.team4.boulderbuild.ui.gyms
 
-
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.team4.boulderbuild.R
@@ -9,10 +8,9 @@ import com.team4.boulderbuild.ui.common.basicDiffUtil
 import com.team4.boulderbuild.ui.common.bindingInflate
 import com.team4.domain.Gym
 
-
 class GymListAdapter(
     private val listener: (Gym) -> Unit
-): RecyclerView.Adapter<GymListAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<GymListAdapter.ViewHolder>() {
 
     var gyms: List<Gym> by basicDiffUtil(
         emptyList(),

@@ -1,16 +1,14 @@
 package com.team4.boulderbuild.ui.gymform
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.team4.boulderbuild.databinding.GymFormFragmentBinding
-
 import com.team4.boulderbuild.R
+import com.team4.boulderbuild.databinding.GymFormFragmentBinding
 import com.team4.boulderbuild.ui.common.bindingInflate
-
 import org.koin.android.scope.currentScope
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -27,6 +25,7 @@ class GymFormFragment : Fragment() {
     private val gymFormViewModel: GymFormViewModel by currentScope.viewModel(this) {
         parametersOf(args.id)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

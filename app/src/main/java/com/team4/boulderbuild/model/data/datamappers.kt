@@ -1,7 +1,7 @@
 package com.team4.boulderbuild.model.data
 
-import com.team4.domain.Gym as DomainGym
 import com.team4.boulderbuild.model.data.database.Gym as DBGym
+import com.team4.domain.Gym as DomainGym
 
 fun DomainGym.toDBGym(): DBGym =
     DBGym(
@@ -13,7 +13,7 @@ fun DomainGym.toDBGym(): DBGym =
         imgSrc ?: ""
     )
 
-fun DBGym.toDomainGym() : DomainGym =
+fun DBGym.toDomainGym(): DomainGym =
     DomainGym(
         id,
         name,

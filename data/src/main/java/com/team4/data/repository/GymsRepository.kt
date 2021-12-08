@@ -29,7 +29,8 @@ class GymsRepository(
 
     suspend fun update(gym: Gym) {
         if (gym.id == null) {
-            // gym.id = gymCount() // TODO: improve id management
+            // gym.id = gymCount()
+            // TODO: improve id management
             saveGyms(listOf(gym))
         } else {
             gymsLocalDataSource.update(gym)

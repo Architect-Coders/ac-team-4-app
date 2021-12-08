@@ -1,8 +1,8 @@
 package com.team4.boulderbuild.ui.gyms
 
-import com.team4.boulderbuild.R
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.team4.boulderbuild.R
 import com.team4.boulderbuild.databinding.ItemGymActionsBinding
 import com.team4.boulderbuild.ui.common.basicDiffUtil
 import com.team4.boulderbuild.ui.common.bindingInflate
@@ -27,5 +27,6 @@ class GymsAdapter(private val listener: (Gym) -> Unit) :
         holder.itemView.setOnClickListener { listener(gym) }
     }
 
-    class ViewHolder(val dataBinding: ItemGymActionsBinding) : RecyclerView.ViewHolder(dataBinding.root)
+    class ViewHolder(val dataBinding: ItemGymActionsBinding) :
+        RecyclerView.ViewHolder(dataBinding.root)
 }

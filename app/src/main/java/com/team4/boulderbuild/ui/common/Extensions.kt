@@ -16,10 +16,8 @@ import coil.load
 import com.team4.boulderbuild.BoulderBuildApp
 import kotlin.properties.Delegates
 
-
 val Context.app: BoulderBuildApp
     get() = applicationContext as BoulderBuildApp
-
 
 fun <T : ViewDataBinding> ViewGroup.bindingInflate(
     @LayoutRes layoutRes: Int,
@@ -62,7 +60,7 @@ inline fun <reified T : ViewModel> Fragment.getViewModel(crossinline factory: ()
     return ViewModelProvider(this, vmFactory)[T::class.java]
 }
 
-inline fun <T:Any, R> T?.whenNotNull(callback: (T)->R): R? =  this?.let(callback)
+inline fun <T : Any, R> T?.whenNotNull(callback: (T) -> R): R? = this?.let(callback)
 
 fun RecyclerView.addVerticalItemSeparationInDp(verticalItemSeparationInDp: Int) {
     addItemDecoration(MarginItemDecoration(verticalItemSeparationInDp))

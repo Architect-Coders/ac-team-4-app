@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.team4.boulderbuild.R
 import com.team4.boulderbuild.databinding.FragmentNotificationsBinding
 import com.team4.boulderbuild.ui.common.bindingInflate
-
 import org.koin.android.scope.currentScope
 import org.koin.android.viewmodel.ext.android.viewModel
 

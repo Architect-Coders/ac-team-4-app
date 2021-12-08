@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [Gym::class], version = 1)
-abstract class GymDatabase : RoomDatabase(){
+abstract class GymDatabase : RoomDatabase() {
 
     companion object {
         fun build(context: Context) = Room.databaseBuilder(
