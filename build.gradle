@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        kotlin_version = '1.6.0'
+        kotlin_version = '1.6.10'
         koin_version = '3.1.4'
-        nav_version = '2.4.0-beta02'
+        nav_version = '2.3.5'
     }
 
     repositories {
@@ -11,7 +11,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:7.1.0'
         /*
          *  If you use Kotlin Gradle Plugin, you don't need to specify Kotlin's standard library
          *  dependency manually since the plugin adds it to all the Kotlin source sets automatically
@@ -21,7 +21,7 @@ buildscript {
     }
 }
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.6.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
 }
 
 allprojects {
